@@ -76,7 +76,7 @@ class App extends React.Component {
         this.setState({
           passed: data.passed,
           reason: data.output[0]
-        }, () => localStorage.passed: this.state.passed)
+        }, () => localStorage.passed = this.state.passed)
       },
       error: (err) => {
         console.log(err);
