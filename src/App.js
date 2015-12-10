@@ -21,7 +21,7 @@ class App extends React.Component {
     dmid: null,
     adjective: null,
     puppy: null,
-    passed: null,
+    passed: false,
     reason: null,
   }
   getWeather = () => {
@@ -76,7 +76,7 @@ class App extends React.Component {
         this.setState({
           passed: data.passed,
           reason: data.output[0]
-        }, () => localStorage.passed: this.state.passed)
+        }, () => localStorage.passed = this.state.passed)
       },
       error: (err) => {
         console.log(err);
@@ -128,7 +128,8 @@ class App extends React.Component {
             title: localStorage.evilTitle ,
             question: localStorage.evilQuestion,
             projectId: localStorage.evilProject,
-            solutionId: localStorage.evilSolution
+            solutionId: localStorage.evilSolution,
+            passed: localStorage.passed
           });
 
     }
@@ -139,8 +140,8 @@ class App extends React.Component {
       <div id='App'>
           <Header date={this.state.date} temp={this.state.temp} icon={this.state.icon} />
           <Affirmation adjective={this.state.adjective} />
-          {!localStorage.passed ? <div><Challenge passed={this.state.passed} reason={this.state.reason} title={this.state.title} question={this.state.question} checkSolution={this.checkSolution}/>
-        <Footer puppy={this.state.puppy}/></div> : <h1>Great job, puppy saved! </h1>}
+          {!JSON.parse(localStorage.passed) ? <div><Challenge passed={this.state.passed} reason={this.state.reason} title={this.state.title} question={this.state.question} checkSolution={this.checkSolution}/>
+        <Footer puppy={this.state.puppy}/></div> : <div style={{textAlign:'center'}}><img style={{height: '300px'}} src={localStorage.puppy}/><h1>Great job, puppy saved! </h1></div>}
       </div>
     )
   }
