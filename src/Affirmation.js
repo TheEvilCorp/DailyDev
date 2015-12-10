@@ -2,9 +2,19 @@ import React from 'react';
 
 
 class Affirmation extends React.Component {
-  render() {
+ 	constructor(props){
+ 		super(props);
+ 	}
+
+
+  render = () => {
+  	console.log('IN AFFIRMATION: ', this.props.adjective)
     return (
-      <h1 id="Affirmation" style={{textAlign: 'center'}}>You are a ______ developer!!</h1>
+      <h1 id='Affirmation' style={{textAlign: 'center'}}>
+        You are a{this.props.adjective} developer!
+        
+      </h1>
+
     )
   }
 }

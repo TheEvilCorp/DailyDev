@@ -7,6 +7,7 @@ import Challenge from'./Challenge';
 import Footer from'./Footer';
 import $ from 'jquery';
 import marked from 'marked'
+import puppies from './images'
 
 class App extends React.Component {
   state = {
@@ -17,9 +18,9 @@ class App extends React.Component {
     question: null,
     projectId: null,
     solutionId: null,
-    dmid: null
-
-
+    dmid: null,
+    adjective: null,
+    puppy: null
   }
   getWeather = () => {
     $.get('http://api.openweathermap.org/data/2.5/weather?id=5368361&appid=79bcc7a21cd1451a5d8bcc641220ef70&units=imperial', (data) => {
@@ -28,13 +29,26 @@ class App extends React.Component {
       this.setState({temp: temp, icon: icon});
     });
   }
+  getAdjective = () => {
+    var adjectives = ['n awesome', 'n amazing', ' kick-ass', ' freakin awesome', ' boss', ' great', ' fantastic', ' wonderful', ' fricking fantasic', ' fantabulous']
+    var index = Math.floor(Math.random()*adjectives.length);
+    console.log('in get adjectives: ', adjectives[index])
+    this.setState({adjective: adjectives[index]}) 
+  }
+  getPuppy = () => {
+    var index = Math.floor(Math.random()*puppies.length);
+    console.log('in get puppy: ', puppies[index])
+    this.setState({puppy: puppies[index]});
+  }
   checkSolution = (e) => {
     e.preventDefault();
+    console.log('Check Solution')
+    var answer = e.target.children[0].value
     console.log(e.target.children[0].value);
     $.ajax({
       method: 'POST',
-      url: `https://www.codewars.com/api/v1/code-challenges/projects/${this.state.projectId}/solutions/${this.state.solutionId}/attempt?code=function(){functioncalculate(){return"hello"}}`,
-      dataType: 'html',
+      url: `https://www.codewars.com/api/v1/code-challenges/projects/${this.state.projectId}/solutions/${this.state.solutionId}/attempt`,
+      data: {code: answer},
       beforeSend: ( xhr ) => {
         xhr.setRequestHeader('Authorization', 'DPKPgUrPnQ3itPPMq2Gm');
       },
@@ -48,6 +62,7 @@ class App extends React.Component {
     });
   }
   pullSolution = (e) => {
+    console.log('PULLING SOLUTION')
     $.ajax({
       method: 'GET',
       url: `https://www.codewars.com/api/v1/deferred/${this.state.dmid}`,
@@ -71,6 +86,8 @@ class App extends React.Component {
     setInterval(() => {
       this.getWeather();
     }, 180000);
+    this.getAdjective();
+    this.getPuppy();
 
     if(localStorage.evilCorpDate !== Moment().format('MMMM Do YYYY')) {
       localStorage.evilCorpDate = Moment().format('MMMM Do YYYY')
@@ -82,39 +99,41 @@ class App extends React.Component {
           xhr.setRequestHeader('Authorization', 'DPKPgUrPnQ3itPPMq2Gm');
         },
         success: (data) => {
-
           var obj = {
             title: marked(data.name),
             question: marked(data.description),
             projectId: data.session.projectId,
-            solutionId: data.session.solutionId
+            solutionId: data.session.solutionId,
           }
           this.setState(obj, () => {
             localStorage.evilTitle = marked(data.name),
             localStorage.evilQuestion = marked(data.description),
             localStorage.evilProject = data.session.projectId,
-            localStorage.evilSolution = data.session.solutionId
+            localStorage.evilSolution = data.session.solutionId,
+            localStorage.adjective = this.state.adjective,
+            localStorage.puppy = this.state.puppy
           });
         }
       });
     } else {
+      console.log('in componentDidMount: ', this.state.adjective);
       this.setState({
             title: localStorage.evilTitle ,
             question: localStorage.evilQuestion,
             projectId: localStorage.evilProject,
             solutionId: localStorage.evilSolution
           });
+
     }
   }
-
 
   render() {
     return (
       <div id='App'>
           <Header date={this.state.date} temp={this.state.temp} icon={this.state.icon} />
-          <Affirmation />
+          <Affirmation adjective={this.state.adjective} />
           <Challenge title={this.state.title} question={this.state.question} checkSolution={this.checkSolution}/>
-          <Footer />
+          <Footer puppy={this.state.puppy}/>
       </div>
     )
   }

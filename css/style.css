@@ -37,3 +37,9 @@ form input:focus{
   border-width: 0px;
   border: none
 }
+#speechBubble {
+  position: absolute;
+  display: inline;
+  top: 465;
+  left: 100;
+}
