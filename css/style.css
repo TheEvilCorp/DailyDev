@@ -45,3 +45,9 @@ body div div{
   left: 7;
   
 }
+#speechBubble {
+  position: absolute;
+  display: inline;
+  top: 465;
+  left: 100;
+}

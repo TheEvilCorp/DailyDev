@@ -2,10 +2,16 @@ import React from 'react';
 
 
 class Affirmation extends React.Component {
-  render() {
+ 	constructor(props){
+ 		super(props);
+ 	}
+
+
+  render = () => {
+  	console.log('IN AFFIRMATION: ', this.props.adjective)
     return (
       <div id='Affirmation'>
-        Affirmation
+        You are a{this.props.adjective} developer
         
       </div>
     )
