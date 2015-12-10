@@ -1,0 +1,47 @@
+
+body div div{
+  border: 1px solid black;
+}
+
+#App {
+  position: relative;
+  width: 833;
+  height: 540;
+  
+}
+
+#Header {
+  position: absolute;
+  width: 790;
+  height: 52;
+  top: 33;
+  left: 15.671875;
+  
+}
+
+#Affirmation {
+  position: absolute;
+  width: 641;
+  height: 120;
+  top: 104;
+  left: 76.671875;
+  
+}
+
+#Challenge {
+  position: absolute;
+  width: 618;
+  height: 147;
+  top: 253;
+  left: 81.671875;
+  
+}
+
+#Footer {
+  position: absolute;
+  width: 815;
+  height: 71;
+  top: 465;
+  left: 7;
+  
+}
