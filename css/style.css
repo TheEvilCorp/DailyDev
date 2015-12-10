@@ -1,11 +1,17 @@
 #degree{
   font-size: 18px;
 }
+.nav, .navbar-inverse, .navbar-header, .container-fluid{
+  background-color: rgb(90, 193, 144);
+}
 
 #Affirmation{
   margin: auto;
 }
-
+.panel-heading{
+  text-align: left;
+  margin-left: -15px;
+}
 .panel-body{
   width: 60%;
   margin: 25px auto;
