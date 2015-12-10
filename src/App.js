@@ -72,8 +72,6 @@ class App extends React.Component {
       this.getWeather();
     }, 180000);
 
-    console.log('Date: ', Moment().format('MMMM Do YYYY'));
-    console.log('Is true? ', Moment().format('MMMM Do YYYY') === Moment().format('MMMM Do YYYY'))
     if(localStorage.evilCorpDate !== Moment().format('MMMM Do YYYY')) {
       localStorage.evilCorpDate = Moment().format('MMMM Do YYYY')
 
@@ -105,7 +103,7 @@ class App extends React.Component {
             question: localStorage.evilQuestion,
             projectId: localStorage.evilProject,
             solutionId: localStorage.evilSolution
-          }); 
+          });
     }
   }
 
@@ -125,5 +123,3 @@ class App extends React.Component {
 module.exports = App;
 
 render(<App />, document.getElementById('main-container'));
-
-
