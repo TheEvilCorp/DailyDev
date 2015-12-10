@@ -1,47 +1,39 @@
-
-body div div{
-  border: 1px solid black;
+#degree{
+  font-size: 18px;
 }
 
-#App {
-  position: relative;
-  width: 833;
-  height: 540;
-  
+#Affirmation{
+  margin: auto;
 }
 
-#Header {
-  position: absolute;
-  width: 790;
-  height: 52;
-  top: 33;
-  left: 15.671875;
-  
+.panel-body{
+  width: 60%;
+  margin: 25px auto;
+  background-color: rgba(8, 77, 98, 0.84);
+  border-radius: 20px;
+}
+form{
+  margin: auto;
+  width: 80%;
+}
+form input{
+  margin: auto;
+  width: 100%;
+  height: 50px;
+  overflow: scroll;
+  background: transparent;
+  border-width: 0px;
+  border: none;
+  border-bottom: 2px solid rgb(2, 138, 162);
+  color: rgb(2, 138, 162);
+
 }
 
-#Affirmation {
-  position: absolute;
-  width: 641;
-  height: 120;
-  top: 104;
-  left: 76.671875;
-  
+::-webkit-input-placeholder{
+  color: rgb(2, 138, 162);
 }
 
-#Challenge {
-  position: absolute;
-  width: 618;
-  height: 147;
-  top: 253;
-  left: 81.671875;
-  
-}
-
-#Footer {
-  position: absolute;
-  width: 815;
-  height: 71;
-  top: 465;
-  left: 7;
-  
+form input:focus{
+  border-width: 0px;
+  border: none
 }
