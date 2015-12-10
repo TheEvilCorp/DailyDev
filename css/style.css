@@ -5,6 +5,27 @@
   background-color: rgb(90, 193, 144);
 }
 
+code.lang-ruby {
+  display: none;
+  visibility: hidden;
+  height: 0;
+}
+
+
+code.lang-ruby:parent {
+  display: none;
+  visibility: hidden;
+  height: 0;
+}
+
+#error{
+  border: 2px solid rgba(207, 49, 28, 0.91);
+  color: rgba(207, 49, 28, 0.91);
+  padding: 5px;
+  width: 60%;
+  margin: auto;
+}
+
 #Affirmation{
   margin: auto;
 }
@@ -42,4 +63,10 @@ form input{
 form input:focus{
   border-width: 0px;
   border: none
+}
+#speechBubble {
+  position: absolute;
+  display: inline;
+  top: 465;
+  left: 100;
 }
