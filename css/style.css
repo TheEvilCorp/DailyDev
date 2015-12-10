@@ -1,11 +1,38 @@
 #degree{
   font-size: 18px;
 }
+.nav, .navbar-inverse, .navbar-header, .container-fluid{
+  background-color: rgb(90, 193, 144);
+}
+
+code.lang-ruby {
+  display: none;
+  visibility: hidden;
+  height: 0;
+}
+
+
+code.lang-ruby:parent {
+  display: none;
+  visibility: hidden;
+  height: 0;
+}
+
+#error{
+  border: 2px solid rgba(207, 49, 28, 0.91);
+  color: rgba(207, 49, 28, 0.91);
+  padding: 5px;
+  width: 60%;
+  margin: auto;
+}
 
 #Affirmation{
   margin: auto;
 }
-
+.panel-heading{
+  text-align: left;
+  margin-left: -15px;
+}
 .panel-body{
   width: 60%;
   margin: 25px auto;

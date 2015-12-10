@@ -20,7 +20,9 @@ class App extends React.Component {
     solutionId: null,
     dmid: null,
     adjective: null,
-    puppy: null
+    puppy: null,
+    passed: null,
+    reason: null,
   }
   getWeather = () => {
     $.get('http://api.openweathermap.org/data/2.5/weather?id=5368361&appid=79bcc7a21cd1451a5d8bcc641220ef70&units=imperial', (data) => {
@@ -33,7 +35,7 @@ class App extends React.Component {
     var adjectives = ['n awesome', 'n amazing', ' kick-ass', ' freakin awesome', ' boss', ' great', ' fantastic', ' wonderful', ' fricking fantasic', ' fantabulous']
     var index = Math.floor(Math.random()*adjectives.length);
     console.log('in get adjectives: ', adjectives[index])
-    this.setState({adjective: adjectives[index]}) 
+    this.setState({adjective: adjectives[index]})
   }
   getPuppy = () => {
     var index = Math.floor(Math.random()*puppies.length);
@@ -70,7 +72,11 @@ class App extends React.Component {
         xhr.setRequestHeader('Authorization', 'DPKPgUrPnQ3itPPMq2Gm');
       },
       success: (data) => {
-        console.log(data);
+        console.log(data)
+        this.setState({
+          passed: data.passed,
+          reason: data.output[0]
+        }, () => localStorage.passed: this.state.passed)
       },
       error: (err) => {
         console.log(err);
@@ -111,7 +117,8 @@ class App extends React.Component {
             localStorage.evilProject = data.session.projectId,
             localStorage.evilSolution = data.session.solutionId,
             localStorage.adjective = this.state.adjective,
-            localStorage.puppy = this.state.puppy
+            localStorage.puppy = this.state.puppy,
+            localStorage.passed = null
           });
         }
       });
@@ -132,8 +139,8 @@ class App extends React.Component {
       <div id='App'>
           <Header date={this.state.date} temp={this.state.temp} icon={this.state.icon} />
           <Affirmation adjective={this.state.adjective} />
-          <Challenge title={this.state.title} question={this.state.question} checkSolution={this.checkSolution}/>
-          <Footer puppy={this.state.puppy}/>
+          {!localStorage.passed ? <div><Challenge passed={this.state.passed} reason={this.state.reason} title={this.state.title} question={this.state.question} checkSolution={this.checkSolution}/>
+        <Footer puppy={this.state.puppy}/></div> : <h1>Great job, puppy saved! </h1>}
       </div>
     )
   }
