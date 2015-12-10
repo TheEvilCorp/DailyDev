@@ -1,0 +1,10 @@
+{
+	"manifest_version": 2,
+	"name": "Daily Dev",
+	"description": "Get your daily hack challenge and affirmation",
+	"version": "0.0.1",
+	"chrome_url_overrides" : {
+		"newtab": "index.html"
+	},
+	"permissions": ["https://www.codewars.com/*"]
+}
