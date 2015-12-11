@@ -40,7 +40,7 @@ class App extends React.Component {
   getPuppy = () => {
     var index = Math.floor(Math.random()*puppies.length);
     console.log('in get puppy: ', puppies[index])
-    this.setState({puppy: puppies[index]});
+    this.setState({puppy: puppies[index]}, () => {localStorage.puppy = puppies[index]});
   }
   checkSolution = (e) => {
     e.preventDefault();
@@ -56,7 +56,7 @@ class App extends React.Component {
       },
       success: (data) => {
         console.log('dmid: ', data.dmid)
-        this.setState({dmid: data.dmid}, () => setTimeout(() => {this.pullSolution()}, 2000));
+        this.setState({dmid: data.dmid}, () => setInterval(() => {this.pullSolution()}, 1500));
       },
       error: (err) => {
         console.log('error: ', err);
@@ -94,11 +94,11 @@ class App extends React.Component {
       this.getWeather();
     }, 180000);
     this.getAdjective();
-    this.getPuppy();
+
 
     if(localStorage.evilCorpDate !== Moment().format('MMMM Do YYYY')) {
       localStorage.evilCorpDate = Moment().format('MMMM Do YYYY')
-
+      this.getPuppy();
       $.ajax({
         method: 'POST',
         url: 'https://www.codewars.com/api/v1/code-challenges/javascript/train',
@@ -130,14 +130,11 @@ class App extends React.Component {
             question: localStorage.evilQuestion,
             projectId: localStorage.evilProject,
             solutionId: localStorage.evilSolution,
-            passed: localStorage.passed
+            passed: localStorage.passed,
+            puppy: localStorage.puppy
           });
 
     }
-    $('code.lang-python').closest('pre').remove();
-    $('code.lang-ruby').closest('pre').remove();
-    $('code.lang-java').closest('pre').remove();
-    $('code.lang-haskell').closest('pre').remove();
   }
 
   render() {
@@ -146,7 +143,8 @@ class App extends React.Component {
           <Header date={this.state.date} temp={this.state.temp} icon={this.state.icon} />
           <Affirmation adjective={this.state.adjective} />
           {!JSON.parse(localStorage.passed) ? <div><Challenge passed={this.state.passed} reason={this.state.reason} title={this.state.title} question={this.state.question} checkSolution={this.checkSolution}/>
-        <Footer puppy={this.state.puppy}/></div> : <div style={{textAlign:'center'}}><img style={{height: '300px'}} src={localStorage.puppy}/><h1>Great job, puppy saved! </h1></div>}
+          <Footer puppy={this.state.puppy}/></div> : <div style={{textAlign:'center'}}><img style={{height: '300px'}} src={localStorage.puppy}/><h1>Great job, puppy saved! </h1></div>}
+          <a href='https://overreact.herokuapp.com/'><p id="OverReact">Powered by OverReact</p></a>
       </div>
     )
   }
