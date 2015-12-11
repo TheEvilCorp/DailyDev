@@ -85,6 +85,7 @@ class App extends React.Component {
   }
 
   componentDidMount = () => {
+
     setInterval(() => {
       this.setState({date: Moment().format('MMMM Do YYYY, h:mm a')});
     }, 60000);
@@ -133,6 +134,10 @@ class App extends React.Component {
           });
 
     }
+    $('code.lang-python').closest('pre').remove();
+    $('code.lang-ruby').closest('pre').remove();
+    $('code.lang-java').closest('pre').remove();
+    $('code.lang-haskell').closest('pre').remove();
   }
 
   render() {
