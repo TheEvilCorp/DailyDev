@@ -10,7 +10,7 @@ class Affirmation extends React.Component {
   render = () => {
   	console.log('IN AFFIRMATION: ', this.props.adjective)
     return (
-      <h1 id='Affirmation' style={{textAlign: 'center'}}>
+      <h1 id='Affirmation' style={{textAlign: 'center', marginBottom: '30px'}}>
         You are a{this.props.adjective} developer!
         
       </h1>

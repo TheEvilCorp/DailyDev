@@ -5,14 +5,16 @@
   background-color: rgb(90, 193, 144);
 }
 
-code.lang-ruby {
+code.lang-ruby,
+code.lang-java,
+code.lang-python,
+code.lang-haskell {
   display: none;
   visibility: hidden;
   height: 0;
 }
 
-
-code.lang-ruby:parent {
+.hideParent {
   display: none;
   visibility: hidden;
   height: 0;
