@@ -5,20 +5,18 @@
   background-color: rgb(90, 193, 144);
 }
 
-code.lang-ruby,
-code.lang-java,
-code.lang-python,
-code.lang-haskell {
+pre {
   display: none;
   visibility: hidden;
-  height: 0;
+  height: 0px;
+}
+pre:first-of-type{
+  display: block;
+  visibility: visible;
+  height: auto;
+  margin-bottom: -150px;
 }
 
-.hideParent {
-  display: none;
-  visibility: hidden;
-  height: 0;
-}
 
 #error{
   border: 2px solid rgba(207, 49, 28, 0.91);
@@ -30,6 +28,7 @@ code.lang-haskell {
 
 #Affirmation{
   margin: auto;
+  margin-bottom: 50px;
 }
 .panel-heading{
   text-align: left;
@@ -71,4 +70,10 @@ form input:focus{
   display: inline;
   top: 465;
   left: 100;
+}
+#OverReact{
+  position: absolute;
+  bottom:0;
+  right: 5;
+  color: #61DAFB
 }

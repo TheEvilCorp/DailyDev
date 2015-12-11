@@ -4,7 +4,9 @@ import React from 'react';
 
 
 class Challenge extends React.Component {
-  render() {
+
+  render = () => {
+    console.log(this.props.reason)
     return (
       <div>
         <div className="panel-body">
@@ -17,7 +19,7 @@ class Challenge extends React.Component {
             <input type="text" placeholder="Paste Code Here..."/>
           </form>
         </div>
-        {this.props.reason && !this.props.passed ? <div id="error" dangerouslySetInnerHTML={{__html: this.props.reason}}></div> : null}
+        {!this.props.passed ? <div id="error" dangerouslySetInnerHTML={{__html: this.props.reason}}></div> : null}
       </div>
     )
   }
