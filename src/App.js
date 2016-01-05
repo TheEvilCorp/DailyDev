@@ -52,7 +52,7 @@ class App extends React.Component {
       url: `https://www.codewars.com/api/v1/code-challenges/projects/${this.state.projectId}/solutions/${this.state.solutionId}/attempt`,
       data: {code: answer},
       beforeSend: ( xhr ) => {
-        xhr.setRequestHeader('Authorization', 'vcb1-zcdBxKyJ7RzJieP');
+        xhr.setRequestHeader('Authorization', '');
       },
       success: (data) => {
         console.log('dmid: ', data.dmid)
@@ -69,7 +69,7 @@ class App extends React.Component {
       method: 'GET',
       url: `https://www.codewars.com/api/v1/deferred/${this.state.dmid}`,
       beforeSend: ( xhr ) => {
-        xhr.setRequestHeader('Authorization', 'vcb1-zcdBxKyJ7RzJieP');
+        xhr.setRequestHeader('Authorization', '');
       },
       success: (data) => {
         console.log(data)
@@ -103,7 +103,7 @@ class App extends React.Component {
         method: 'POST',
         url: 'https://www.codewars.com/api/v1/code-challenges/javascript/train',
         beforeSend: ( xhr ) => {
-          xhr.setRequestHeader('Authorization', 'vcb1-zcdBxKyJ7RzJieP');
+          xhr.setRequestHeader('Authorization', '');
         },
         success: (data) => {
           var obj = {
