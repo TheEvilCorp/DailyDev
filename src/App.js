@@ -32,7 +32,7 @@ class App extends React.Component {
     });
   }
   getAdjective = () => {
-    var adjectives = ['n awesome', 'n amazing', ' kick-ass', ' freakin awesome', ' boss', ' great', ' fantastic', ' wonderful', ' fricking fantasic', ' fantabulous']
+    var adjectives = ['n awesome', 'n amazing', ' kick-ass', ' freakin awesome', ' boss', ' great', ' fantastic', ' wonderful', ' fricking fantastic', ' fantabulous']
     var index = Math.floor(Math.random()*adjectives.length);
     console.log('in get adjectives: ', adjectives[index])
     this.setState({adjective: adjectives[index]})
@@ -52,7 +52,7 @@ class App extends React.Component {
       url: `https://www.codewars.com/api/v1/code-challenges/projects/${this.state.projectId}/solutions/${this.state.solutionId}/attempt`,
       data: {code: answer},
       beforeSend: ( xhr ) => {
-        xhr.setRequestHeader('Authorization', 'DPKPgUrPnQ3itPPMq2Gm');
+        xhr.setRequestHeader('Authorization', '');
       },
       success: (data) => {
         console.log('dmid: ', data.dmid)
@@ -69,7 +69,7 @@ class App extends React.Component {
       method: 'GET',
       url: `https://www.codewars.com/api/v1/deferred/${this.state.dmid}`,
       beforeSend: ( xhr ) => {
-        xhr.setRequestHeader('Authorization', 'DPKPgUrPnQ3itPPMq2Gm');
+        xhr.setRequestHeader('Authorization', '');
       },
       success: (data) => {
         console.log(data)
@@ -103,7 +103,7 @@ class App extends React.Component {
         method: 'POST',
         url: 'https://www.codewars.com/api/v1/code-challenges/javascript/train',
         beforeSend: ( xhr ) => {
-          xhr.setRequestHeader('Authorization', 'DPKPgUrPnQ3itPPMq2Gm');
+          xhr.setRequestHeader('Authorization', '');
         },
         success: (data) => {
           var obj = {

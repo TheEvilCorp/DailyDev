@@ -5,7 +5,7 @@
   background-color: rgb(90, 193, 144);
 }
 
-pre {
+/*pre {
   display: none;
   visibility: hidden;
   height: 0px;
@@ -15,7 +15,7 @@ pre:first-of-type{
   visibility: visible;
   height: auto;
   margin-bottom: -150px;
-}
+}*/
 
 
 #error{
@@ -71,9 +71,17 @@ form input:focus{
   top: 465;
   left: 100;
 }
+#Footer div:last-child{
+  display: inline-block;
+  float: left;
+}
+
 #OverReact{
-  position: absolute;
+/*  position: absolute;
   bottom:0;
-  right: 5;
-  color: #61DAFB
+  right: 5;*/
+  display: inline-block;
+  float: right;
+  color: #61DAFB;
+  margin-right: 30px;
 }
